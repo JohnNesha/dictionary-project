@@ -7,7 +7,6 @@ export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword);
   const [loaded, setLoaded] = useState(false);
   const [definition, setDefinition] = useState(null);
-  const [photos, setPhotos] = useState([]);
 
   function handleImages(response) {
     setPhotos(response.data.photos);
