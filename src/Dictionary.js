@@ -8,10 +8,6 @@ export default function Dictionary(props) {
   const [loaded, setLoaded] = useState(false);
   const [definition, setDefinition] = useState(null);
 
-  function handleImages(response) {
-    setPhotos(response.data.photos);
-  }
-
   function handleResponse(response) {
     setDefinition(response.data);
     let apiKey = "a723fd412o41a9d1a23tfcb7443f0307";
