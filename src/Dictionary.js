@@ -12,9 +12,7 @@ export default function Dictionary(props) {
     setDefinition(response.data);
     let apiKey = "a723fd412o41a9d1a23tfcb7443f0307";
     let apiUrl = `https://api.shecodes.io/images/v1/search?query=${response.data.word}&key=${apiKey}`;
-    axios
-      .get(apiUrl, { headers: { Authorization: `Bearer ${apiKey}` } })
-      .then(handleImages);
+    axios.get(apiUrl, { headers: { Authorization: `Bearer ${apiKey}` } });
   }
 
   function load() {
