@@ -14,3 +14,7 @@
   text-align: center;
   margin: 30px 0;
 }
+
+.App a {
+  color: #6c63ff;
+}

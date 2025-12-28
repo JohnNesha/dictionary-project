@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Results from "./Results";
+import Result from "./Results";
+import Photos from "./Photos";
 import "./Dictionary.css";
 
 export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword);
   const [loaded, setLoaded] = useState(false);
   const [definition, setDefinition] = useState(null);
+  const [photos, setPhotos] = useState([]);
+
+  function handleImages(response) {
+    setPhotos(response.data.photos);
+  }
 
   function handleResponse(response) {
     setDefinition(response.data);
     let apiKey = "a723fd412o41a9d1a23tfcb7443f0307";
     let apiUrl = `https://api.shecodes.io/images/v1/search?query=${response.data.word}&key=${apiKey}`;
-    axios.get(apiUrl, { headers: { Authorization: `Bearer ${apiKey}` } });
+    axios
+      .get(apiUrl, { headers: { Authorization: `Bearer ${apiKey}` } })
+      .then(handleImages);
   }
 
   function load() {
@@ -40,7 +48,7 @@ export default function Dictionary(props) {
       <div className="Dictionary">
         <section>
           <form onSubmit={handleSubmit}>
-            <label>Enter a word</label>
+            <label>What word do you want to look up?</label>
             <input
               type="search"
               placeholder="Search for a word"
@@ -50,9 +58,10 @@ export default function Dictionary(props) {
               onChange={handleKeywordChange}
             />
           </form>
-          <small className="hint">i.e. hot, wine, sunset, coding</small>
+          <small className="hint">i.e. paris, wine, yoga, coding</small>
         </section>
-        <Results definition={definition} />
+        <Result definition={definition} />
+        <Photos photos={photos} />
       </div>
     );
   } else {

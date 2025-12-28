@@ -9,15 +9,3 @@
   color: #666666;
   display: inline;
 }
-
-.Phonetic a {
-  color: #6c63ff;
-  font-weight: normal;
-  margin-right: 15px;
-  font-size: 14px;
-  line-height: 17px;
-  padding: 8px 18px;
-  border: 1px solid #dddddd;
-  border-radius: 50px;
-  text-decoration: none;
-}
